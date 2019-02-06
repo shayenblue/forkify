@@ -41,8 +41,7 @@ const controlSearch = async () => {
         } catch(error) {
             alert('Something went wrong');
             clearLoader();
-        }
-        
+        }        
     }
 }
 
