@@ -41,3 +41,12 @@ elements.searchForm.addEventListener('submit', e => {
     controlSearch();
 })
 
+elements.searchResultPages.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline')
+    if (btn) {
+        const goToPage = parseInt(btn.dataset.goto, 10); //because of data-goto attribute of button element
+        searchView.clearResults();
+        searchView.renderResults(state.search.result, goToPage);
+    }
+    
+})
