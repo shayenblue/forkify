@@ -74,10 +74,14 @@ elements.searchResultPages.addEventListener('click', e => {
 
          //Create new recipe
         state.recipe = new Recipe(id);
+        
+        //TESTING
+        window.r = state.recipe;
 
         try {
-            //Get recipe data
+            //Get recipe data and parse ingredients
             await state.recipe.getRecipe();
+            state.recipe.parseIngredients();
 
             //Calculate servings and time
             state.recipe.calcTime();

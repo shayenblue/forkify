@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {key, url} from '../config.js'
+import { AssertionError } from 'assert';
 
 export default class Recipe {
     constructor (id) {
@@ -19,7 +20,14 @@ export default class Recipe {
             this.author = 'Closet Cooking';
             this.img = 'http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg';
             this.url = 'https://www.food2fork.com/view/Jalapeno_Popper_Grilled_Cheese_Sandwich/35382';
-            this.ingredients = ['2 jalapeno peppers, cut in half lengthwise and seeded', '2 slices sour dough bread', '1 tablespoon butter, room temperature', '2 tablespoons cream cheese, room temperature', '1/2 cup jack and cheddar cheese, shredded', '1 tablespoon tortilla chips, crumbled'];            
+            this.ingredients = [
+                '2 jalapeno peppers, cut in half lengthwise and seeded', 
+                '2 slices sour dough bread', 
+                '1 tablespoon butter, room temperature', 
+                '2 tablespoons cream cheese, room temperature', 
+                '1/2 cup jack and cheddar cheese, shredded', 
+                '1 tablespoon tortilla chips, crumbled'
+            ];            
         } catch(error) {
             console.log(error);
             alert('Something went wrong :(')
@@ -35,5 +43,62 @@ export default class Recipe {
 
     calcServings() {
         this.servings = 4;
+    }
+
+    parseIngredients() {
+        const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspon', 'cups', 'pounds'];
+        const unitShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound']
+        const newIngredients = this.ingredients.map(el => {
+            // 1)Uniform units
+            let ingredient = el.toLowerCase();
+            unitsLong.forEach((unit, i) => {
+                ingredient = ingredient.replace(unit, unitShort[i]);
+            })
+
+            //2) Remove parentheses
+            ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
+
+            //3) Parse ingredients into count, unit and ingredient
+            const arrIng = ingredient.split(' ');
+            const unitIndex = arrIng.findIndex(el2 => unitShort.includes(el2));
+
+            let objIng;
+            if(unitIndex > -1) {
+                //There is a unit
+                //ex. 4 1/2 cups, arrCount is [4, 1/2]
+                //ex. 4 cups, arrCount is [4]
+                const arrCount = arrIng.slice(0, unitIndex); 
+                let count;
+                if(arrCount.length === 1) {
+                    count = eval(arrIng[0].replace('-','+'));
+                } else if (arrCount.length > 1) {
+                    count = eval(arrIng.slice(0, unitIndex).join('+'));
+                }
+
+                objIng = {
+                    count,
+                    unit: arrIng[unitIndex],
+                    ingredient: arrIng.slice(unitIndex + 1).join(' ')
+                }
+
+            } else if (parseInt(arrIng[0], 10)) {
+                //There is no unit, but the first element is a number
+                objIng = {
+                    count: parseInt(arrIng[0], 10),
+                    unit: '',
+                    ingredient: arrIng.slice(1).join(' ')
+            }
+            } else if (unitIndex === -1) {
+                //There is no unit and NO number in first position of ingredient
+                objIng = {
+                    count: 1,
+                    unit: '',
+                    ingredient //ingredient : ingredient
+                }
+            }
+
+            return objIng;
+        });
+        this.ingredients = newIngredients;
     }
 }
