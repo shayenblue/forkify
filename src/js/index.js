@@ -14,6 +14,7 @@ import {elements, renderLoader, clearLoader} from './views/base';
 */
 
 const state = {};
+window.s = state;
 
 /*
  * SEARCH CONTROLLER
@@ -111,7 +112,7 @@ elements.searchResultPages.addEventListener('click', e => {
 controlRecipe(); //TODO Delete, use ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe);)
 
 /*
-LIST CONTROLLER
+* LIST CONTROLLER
 */
 
 const controlList = () => {
@@ -123,7 +124,26 @@ const controlList = () => {
         const item = state.list.addItem(el.count, el.unit, el.ingredient);
         listView.renderItem(item);
     })
-}
+};
+
+//Handle delete and update list item events
+elements.shopping.addEventListener('click', el => {
+    const id = el.target.closest('.shopping__item').dataset.itemid;
+    console.log(id);
+
+    //Handle Delete button
+    if (el.target.matches('.shopping__delete, .shopping__delete *')) {
+        //Delete from state
+        state.list.deleteItem(id);
+
+        //Delete from UI
+        listView.deleteItem(id);
+    //Handle the count update
+    } else if (el.target.matches('.shopping__count-value')) {
+        const val = parseFloat(el.target.value, 10);
+        state.list.updateCount(id, val);
+    }
+})
 
 //Using event delegation for handling recipe button cliks
 elements.recipe.addEventListener('click', e => {
@@ -137,7 +157,7 @@ elements.recipe.addEventListener('click', e => {
         //Increase button is clicked  
         state.recipe.updateServings('inc');
         recipeView.updateServingsIngredients(state.recipe);
-    } else if (e.target.matches('.recipe__btn--add, recipe__btn--add *')) {
+    } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *')) {        
         controlList();
     }
     console.log(state.recipe);
