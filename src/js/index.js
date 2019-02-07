@@ -1,6 +1,7 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 import {elements, renderLoader, clearLoader} from './views/base';
 
 /*Global state of the app
@@ -71,8 +72,10 @@ elements.searchResultPages.addEventListener('click', e => {
 
      if (id) {
          // Prepare UI for changes
-
-         //Create new recipe
+        recipeView.clearRecipe();
+        renderLoader(elements.recipe);
+        
+        //Create new recipe
         state.recipe = new Recipe(id);
         
         //TESTING
@@ -88,7 +91,8 @@ elements.searchResultPages.addEventListener('click', e => {
             state.recipe.calcServings();
 
             //Render recipe
-            console.log(state.recipe);
+            clearLoader();
+            recipeView.renderRecipe(state.recipe);
         } catch(error) {
             alert('Error processing recipe! Sorry :(')
         }        
