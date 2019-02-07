@@ -74,6 +74,11 @@ elements.searchResultPages.addEventListener('click', e => {
          // Prepare UI for changes
         recipeView.clearRecipe();
         renderLoader(elements.recipe);
+
+        // Highlight selected search item
+        if (state.search) {
+            searchView.highlightSelected(state.recipe.id);
+        }
         
         //Create new recipe
         state.recipe = new Recipe(id);
