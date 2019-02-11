@@ -16,7 +16,6 @@ import {elements, renderLoader, clearLoader} from './views/base';
 */
 
 const state = {};
-window.s = state;
 
 /*
  * SEARCH CONTROLLER
@@ -91,8 +90,6 @@ elements.searchResultPages.addEventListener('click', e => {
             searchView.highlightSelected(state.recipe.id);
         }
         
-        //TESTING
-        window.r = state.recipe;
 
         try {
             //Get recipe data and parse ingredients
@@ -226,7 +223,3 @@ elements.recipe.addEventListener('click', e => {
         controlLike();
     }  
 })
-
-
-
-window.l = new List();
