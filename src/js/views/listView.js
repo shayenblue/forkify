@@ -24,10 +24,8 @@ export const deleteItem = id => {
 };
 
 export const addDeleteBtn = () => {
-    const markup = `
-     <div class="btn-delete">
-        <button class="btn-small">Delete all items</button>
-    </div>
+    const markup = `     
+        <button class="btn-small btn-delete">Delete all items</button>    
     `;
     elements.shopping.insertAdjacentHTML('afterbegin', markup);
 };
@@ -39,4 +37,21 @@ export const removeDeleteBtn = () => {
 
 export const isDeleteBtn = () => {
     return document.querySelector('.btn-delete') ? true : false;    
-}
+};
+
+export const returnCustomInput = () => {
+    const count = document.querySelector('.shopping__custom--value');
+    const unit = document.querySelector('.shopping__custom--unit');
+    const ingredient = document.querySelector('.shopping__custom--description');
+    const item = [count.value, unit.value, ingredient.value];
+    //Clear input after values are passed
+    
+    count.value = '';
+    unit.value = '';
+    ingredient.value = '';
+
+    return item;
+
+};
+
+

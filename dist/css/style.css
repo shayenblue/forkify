@@ -441,6 +441,9 @@ body {
   padding: 3rem 4rem;
   display: flex;
   flex-direction: column; }
+  .shopping__custom {
+    flex: 0 0 25.5rem;
+  }
   .shopping__list {
     list-style: none;
     max-height: 77rem;
@@ -459,7 +462,7 @@ body {
     margin-right: 2rem;
     cursor: pointer;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between; }    
     .shopping__count input {
       color: inherit;
       font-family: inherit;
@@ -473,6 +476,31 @@ body {
         background-color: #F2EFEE; }
     .shopping__count p {
       font-size: 1.2rem; }
+  .shopping__custom {            
+    padding: .4rem .5rem;
+    border: 1px solid #F2EFEE;
+    border-radius: 3px;
+    margin-right: 18rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between; }
+    .shopping__custom input {
+      color: inherit;
+      font-family: inherit;
+      font-size: 1.2rem;
+      text-align: center;
+      border: none;
+      width: 2.7rem;
+      border-radius: 3px; }
+      .shopping__custom .unit {
+        margin-left: -90px;
+         width: 7rem;  }
+      .shopping__custom .description {
+         width: 14rem;
+         margin-left: -80px;}
+      .shopping__custom input:focus {
+        outline: none;
+        background-color: #F2EFEE; }
   .shopping__description {
     flex: 1;
     font-size: 1.3rem;

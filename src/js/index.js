@@ -125,7 +125,7 @@ const controlList = () => {
     //Create a new list IF there is none yet
     if (!state.list) state.list = new List();
 
-    //Add each igredient to the list and UI;
+    //Add each igredient to the list and UI;    
     state.recipe.ingredients.forEach(el => {
         const item = state.list.addItem(el.count, el.unit, el.ingredient);
         listView.renderItem(item);       
@@ -136,9 +136,12 @@ const controlList = () => {
     console.log(state.list.items);
 };
 
+//Handle Enter input in list
+
 //Handle delete and update list item events
 elements.shopping.addEventListener('click', el => {      
   
+    //If 'Delete all items' button clicked
     if (el.target.matches('.btn-delete, .btn-delete *')) {
         //Delete ALL items from list
         state.list.items.forEach (el => {
@@ -148,6 +151,10 @@ elements.shopping.addEventListener('click', el => {
         });
         state.list.items=[];
         listView.removeDeleteBtn();
+    
+        //If 'Add item' button clicked
+    } else if (el.target.matches('.list__btn-add')) {
+        addCustomItem();
     } else {
         const id = el.target.closest('.shopping__item').dataset.itemid;    
 
@@ -171,6 +178,13 @@ elements.shopping.addEventListener('click', el => {
     
 })
 
+const addCustomItem = () => {
+    if (!state.list) state.list = new List();        
+        let newItem = {};
+        [newItem.val, newItem.unit, newItem.ingredient] = listView.returnCustomInput();
+        newItem = state.list.addItem(newItem.val, newItem.unit, newItem.ingredient);
+        listView.renderItem(newItem);
+}
 
 
 /*
