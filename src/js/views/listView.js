@@ -22,3 +22,21 @@ export const deleteItem = id => {
     const item = document.querySelector(`[data-itemid="${id}"]`);
     item.parentElement.removeChild(item);
 };
+
+export const addDeleteBtn = () => {
+    const markup = `
+     <div class="btn-delete">
+        <button class="btn-small">Delete all items</button>
+    </div>
+    `;
+    elements.shopping.insertAdjacentHTML('afterbegin', markup);
+};
+
+export const removeDeleteBtn = () => {
+    const item = document.querySelector('.btn-delete');
+    item.parentElement.removeChild(item);
+};
+
+export const isDeleteBtn = () => {
+    return document.querySelector('.btn-delete') ? true : false;    
+}

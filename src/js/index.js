@@ -128,14 +128,28 @@ const controlList = () => {
     //Add each igredient to the list and UI;
     state.recipe.ingredients.forEach(el => {
         const item = state.list.addItem(el.count, el.unit, el.ingredient);
-        listView.renderItem(item);
-    })
+        listView.renderItem(item);       
+    });
+    if (!listView.isDeleteBtn()) {
+        listView.addDeleteBtn();
+    }
+    console.log(state.list.items);
 };
 
 //Handle delete and update list item events
-elements.shopping.addEventListener('click', el => {
-    const id = el.target.closest('.shopping__item').dataset.itemid;
-    console.log(id);
+elements.shopping.addEventListener('click', el => {      
+  
+    if (el.target.matches('.btn-delete, .btn-delete *')) {
+        //Delete ALL items from list
+        state.list.items.forEach (el => {
+            console.log(el);
+            listView.deleteItem(el.id);
+            // state.list.deleteItem(el.id);                        
+        });
+        state.list.items=[];
+        listView.removeDeleteBtn();
+    } else {
+        const id = el.target.closest('.shopping__item').dataset.itemid;    
 
     //Handle Delete button
     if (el.target.matches('.shopping__delete, .shopping__delete *')) {
@@ -144,11 +158,17 @@ elements.shopping.addEventListener('click', el => {
 
         //Delete from UI
         listView.deleteItem(id);
+        //Hide "Delete all elements" button if there is no elements
+        if (state.list.length === 0) {
+            listView.removeDeleteBtn();
+        }
     //Handle the count update
     } else if (el.target.matches('.shopping__count-value')) {
         const val = parseFloat(el.target.value, 10);
         state.list.updateCount(id, val);
     }
+    }
+    
 })
 
 

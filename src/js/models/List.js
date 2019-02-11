@@ -20,7 +20,7 @@ export default class List {
         const index = this.items.findIndex(el => el.id === id);
         //[2, 4, 8] splice(1, 2) --> returns [4, 8], oriignal array is [2]
         //[2, 4, 8] slice(1, 2) --> returns [4], oriignal array is [2, 4, 8]
-        
+        console.log(index);
         this.items.splice(index, 1);
     }
 

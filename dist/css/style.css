@@ -65,15 +65,16 @@ body {
     height: 2.25rem;
     width: 2.25rem;
     fill: currentColor; }
-
+    
 .btn-small, .btn-small:link, .btn-small:visited {
+  margin: auto;
   font-size: 1.3rem;
   padding: 1rem 1.75rem;
   text-decoration: none; }
   .btn-small svg, .btn-small:link svg, .btn-small:visited svg {
     height: 1.5rem;
     width: 1.5rem;
-    fill: currentColor; }
+    fill: currentColor;}
 
 .btn-inline {
   color: #F59A83;
