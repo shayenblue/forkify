@@ -131,12 +131,10 @@ const controlList = () => {
         listView.renderItem(item);       
     });
     if (!listView.isDeleteBtn()) {
-        listView.addDeleteBtn();
+        listView.renderDeleteBtn();
     }
     console.log(state.list.items);
 };
-
-//Handle Enter input in list
 
 //Handle delete and update list item events
 elements.shopping.addEventListener('click', el => {      
@@ -144,12 +142,11 @@ elements.shopping.addEventListener('click', el => {
     //If 'Delete all items' button clicked
     if (el.target.matches('.btn-delete, .btn-delete *')) {
         //Delete ALL items from list
-        state.list.items.forEach (el => {
-            console.log(el);
+        state.list.items.forEach (el => {            
             listView.deleteItem(el.id);
             // state.list.deleteItem(el.id);                        
         });
-        state.list.items=[];
+        state.list.deleteAllItems();
         listView.removeDeleteBtn();
     
         //If 'Add item' button clicked
@@ -225,15 +222,25 @@ const controlLike = () => {
 //Restore liked recipe on page load
 window.addEventListener('load', () => {
     state.likes = new Likes();
+    state.list = new List();
     
     //Restore likes
     state.likes.readStorage();
+    state.list.readStorage();
 
     //Toggle like button
     likesView.toggleLikeMenu(state.likes.getNumberLikes());
 
     //Render the existing likes
     state.likes.likes.forEach(like => likesView.renderLike(like));
+    state.list.items.forEach(item => listView.renderItem(item));
+
+    console.log(state);
+
+    //Render 'Delete all items' button, if there is any item in the list
+    if(state.list.items.length > 0) {
+        listView.renderDeleteBtn();
+    }
     
 })
 

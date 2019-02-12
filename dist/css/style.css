@@ -199,7 +199,8 @@ body {
     display: flex;
     align-items: center;
     height: 100%;
-    transition: all .3s; }
+    transition: all .3s; 
+    visibility: hidden;}
     .likes__field:hover {
       background-color: #F2EFEE; }
   .likes__panel:hover,
@@ -209,7 +210,7 @@ body {
   .likes__icon {
     fill: #F59A83;
     height: 3.75rem;
-    width: 3.75rem; }
+    width: 3.75rem;}
   .likes__panel {
     position: absolute;
     right: 0;

@@ -23,7 +23,7 @@ export const deleteItem = id => {
     item.parentElement.removeChild(item);
 };
 
-export const addDeleteBtn = () => {
+export const renderDeleteBtn = () => {
     const markup = `     
         <button class="btn-small btn-delete">Delete all items</button>    
     `;
