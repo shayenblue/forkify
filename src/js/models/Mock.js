@@ -3,3 +3,77 @@ export const search = {"count": 30, "recipes": [{"publisher": "Closet Cooking", 
 export const recipe =  {"recipe": {"publisher": "All Recipes", "f2f_url": "http://food2fork.com/view/3763", "ingredients": ["1 (12 ounce) package egg noodles", "1/4 cup chopped onion", "2 cups shredded Cheddar cheese", "1 cup frozen green peas", "2 (6 ounce) cans tuna, drained", "2 (10.75 ounce) cans condensed cream of mushroom soup", "1/2 (4.5 ounce) can sliced mushrooms", "1 cup crushed potato chips"], "source_url": "http://allrecipes.com/Recipe/Best-Tuna-Casserole/Detail.aspx", "recipe_id": "3763", "image_url": "http://static.food2fork.com/3803567dd7.jpg", "social_rank": 99.99999999404858, "publisher_url": "http://allrecipes.com", "title": "Best Tuna Casserole"}};    
 
 export const brokenIngredients = {"recipe": {"publisher": "BBC Food", "f2f_url": "http://food2fork.com/view/5266e4", "ingredients": ["25g/1oz butter", "8 thin slices bread", "50g/2oz sultanas", "2 tsp cinnamon", "350ml/12fl oz whole milk", "50ml/2fl oz double cream", "2 free-range eggs", "25g/1oz granulated sugar", ", grated, to taste nutmeg"], "source_url": "http://www.bbc.co.uk/food/recipes/breadandbutterpuddin_85936", "recipe_id": "5266e4", "image_url": "http://static.food2fork.com/breadandbutterpuddin_85936_16x98d7d.jpg", "social_rank": 99.99999999975547, "publisher_url": "http://www.bbc.co.uk/food", "title": "Bread and butter pudding"}};
+
+export const brokenIngredients2 = {
+    "recipe": {
+      "publisher": "Simply Recipes",
+      "f2f_url": "http://food2fork.com/view/35758",
+      "ingredients": [
+        "1 pounds ziti (can sub penne) pasta",
+        "Olive oil",
+        "Corn starch. A big sprinkle's worth. (optional)",
+        " cups fresh lime juice",
+        "1 pounds bulk Italian sausage or ground beef or pork",
+        "1/3 cups / 80 ml extra virgin olive oil",
+        "1 large onion, chopped",
+        "3-4 garlic cloves, chopped",
+        "1 Tablespoon fresh rosemary (or basil), minced",
+        "1 1/2 Tablespoons Italian seasoning",
+        "1/2 teaspoon red pepper flakes",
+        "1-1/2 large jar of marinara sauce (about 32 ounces) or make your own tomato sauce",
+        "1/2 pound of mozzarella cheese, grated",
+        "1 heaping cup of ricotta cheese",
+        "1 cup grated parmesan or pecorino cheese\n"
+      ],
+      "source_url": "http://www.simplyrecipes.com/recipes/baked_ziti/",
+      "recipe_id": "35758",
+      "image_url": "http://static.food2fork.com/bakedzitia300x20038a2e5b9.jpg",
+      "social_rank": 99.99999996692317,
+      "publisher_url": "http://simplyrecipes.com",
+      "title": "Baked Ziti"
+    }
+  };
+
+  export const brokenIngredients3 = {
+    "recipe": {
+      "publisher": "Elana's Pantry",
+      "f2f_url": "http://food2fork.com/view/d740fd",
+      "ingredients": [
+        "1 pound skinless boneless chicken breast",
+        " cup fresh lime juice",
+        " cup fresh cilantro, chopped",
+        " cup dijon mustard",
+        "1 tablespoon olive oil",
+        "1 tablespoon chili powder",
+        " teaspoon celtic sea salt",
+        " teaspoon pepper"
+      ],
+      "source_url": "http://www.elanaspantry.com/baked-mustard-lime-chicken/",
+      "recipe_id": "d740fd",
+      "image_url": "http://static.food2fork.com/bakedmustardlimechickenDSC_5450be24.jpg",
+      "social_rank": 99.99999998007114,
+      "publisher_url": "http://www.elanaspantry.com",
+      "title": "Baked Mustard Lime Chicken"
+    }
+  };
+
+  export const brokenIngredients4 = {
+    "recipe": {
+      "publisher": "Cookie and Kate",
+      "f2f_url": "http://food2fork.com/view/c782a6",
+      "ingredients": [
+        "Sweet potatoes. Id plan on at least one per person. Medium-sized sweet potatoes with smooth, firm, evenly toned skin usually make the best sweet potato fries.",
+        "Corn starch. A big sprinkle's worth. (optional)",
+        "Olive oil. A couple of tablespoons or so. Enough to lightly and evenly coat the fries.",
+        "Salt, pepper and spices. Amy suggested cumin, but I much prefer cayenne pepper, paprika or curry powder. Garlic is great as well. Its up to you!"
+      ],
+      "source_url": "http://cookieandkate.com/2010/baked-sweet-potato-fries/",
+      "recipe_id": "c782a6",
+      "image_url": "http://static.food2fork.com/sweetpotatofries9550x3674365.jpg",
+      "social_rank": 99.99999999999405,
+      "publisher_url": "http://cookieandkate.com",
+      "title": "All Recipes"
+    }
+  };
+
+  export const brokenIngredients5 = {"recipe": {"publisher": "101 Cookbooks", "f2f_url": "http://food2fork.com/view/47991", "ingredients": ["4 cloves of garlic, peeled", "4 small shallots, peeled", "1 small bunch of kale - 1/2 lb / 8 oz, stalks removed, washed well", "1/3 cup / 80 ml extra virgin olive oil", "1/3 cup / 2 oz goat cheese, plus more for topping", "2 tablespoons + hot pasta water", "fine grain sea salt & freshly ground black pepper", "fresh lemon juice - optional", "12 oz / 340 g dried penne pasta", "fresh thyme - and thyme flowers"], "source_url": "http://www.101cookbooks.com/archives/winter-pasta-recipe.html", "recipe_id": "47991", "image_url": "http://static.food2fork.com/winter_pasta_recipebee6.jpg", "social_rank": 99.9999999572553, "publisher_url": "http://www.101cookbooks.com", "title": "Winter Pasta"}};
