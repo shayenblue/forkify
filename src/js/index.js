@@ -73,6 +73,7 @@ elements.searchResultPages.addEventListener('click', e => {
  */
 
  const controlRecipe = async () => {
+     console.log('Recipe loaded')
      //  Get ID from URL
       const id = window.location.hash.replace('#', '');      
     //  const id = 48164; //TODO Delete, use window.location.hash.replace('#', '');
@@ -94,6 +95,7 @@ elements.searchResultPages.addEventListener('click', e => {
         try {
             //Get recipe data and parse ingredients
             await state.recipe.getRecipe();
+            // state.recipe.parseIngredients();
             state.recipe.parseIngredients();
 
             //Calculate servings and time
@@ -114,7 +116,10 @@ elements.searchResultPages.addEventListener('click', e => {
 
  }
 
-['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+['hashchange', 'load'].forEach(event => window.addEventListener(event, () => {
+    restoreLikes();
+    controlRecipe();
+}));
 // controlRecipe(); //TODO Delete, use ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe);)
 
 /*
@@ -220,7 +225,8 @@ const controlLike = () => {
 }
 
 //Restore liked recipe on page load
-window.addEventListener('load', () => {
+const restoreLikes = () => {
+    console.log('Other stuff loaded')
     state.likes = new Likes();
     state.list = new List();
     
@@ -242,7 +248,7 @@ window.addEventListener('load', () => {
         listView.renderDeleteBtn();
     }
     
-})
+};
 
 
 //Using event delegation for handling recipe button cliks
