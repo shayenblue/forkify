@@ -23,9 +23,7 @@ const state = {};
 
 const controlSearch = async () => {
     // 1) Get query from view
-    const query = searchView.getInput(); 
-    console.log(query);
-
+    const query = searchView.getInput();     
     
     if (query) {
         // 2) Create new Search object and add it to state
@@ -73,7 +71,6 @@ elements.searchResultPages.addEventListener('click', e => {
  */
 
  const controlRecipe = async () => {
-     console.log('Recipe loaded')
      //  Get ID from URL
       const id = window.location.hash.replace('#', '');      
     //  const id = 48164; //TODO Delete, use window.location.hash.replace('#', '');
@@ -225,8 +222,7 @@ const controlLike = () => {
 }
 
 //Restore liked recipe on page load
-const restoreLikes = () => {
-    console.log('Other stuff loaded')
+const restoreLikes = () => {    
     state.likes = new Likes();
     state.list = new List();
     

@@ -9,10 +9,11 @@ const formatCount = count => {
     if (count) {
         // count = 2.5 --> 2 1/2 
         // count = 0.5 --> 1/2
-        const newCount = Math.round(count * 10000) / 10000; //because Math.round returns Int
+        const newCount = count;
+        // const newCount = Math.round(count * 10000) / 10000; //because Math.round returns Int
         const [int, dec] = newCount.toString().split('.').map( el => parseInt(el, 10));
 
-        if (!dec) return newCount;
+        if (!dec) return int;
         
         if(int === 0) {
             const fr = new Fraction(count);
