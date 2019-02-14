@@ -10,10 +10,10 @@ export default class Recipe {
 
     async getRecipe() {
         try {
-            const res = {};
-            res.data = brokenIngredients2;
+            // const res = {};
+            // res.data = brokenIngredients2;
 
-            // const res = await axios(`${url}/get?key=${key}&rId=${this.id}`);            
+            const res = await axios(`${url}/get?key=${key}&rId=${this.id}`);            
             this.title = res.data.recipe.title;
             this.author = res.data.recipe.publisher;
             this.img = res.data.recipe.image_url;
@@ -97,26 +97,24 @@ export default class Recipe {
 
     parseIngredients() {
         const units = new Map();
-        units.set('tbsp', 'tablespoons');
-        units.set('tbsp', 'tablespoon');
-        units.set('oz', 'ounces');
-        units.set('oz', 'ounce');
-        units.set('tsp', 'teaspoons');
-        units.set('tsp', 'teaspoon');
-        units.set('cup', 'cups');
-        units.set('pound', 'pounds');
-        units.set('kg', 'kg');
-        units.set('g', 'g');
-        units.set('ml', 'ml');
+        units.set('tbsp', ['tablespoons', 'tablespoon']);                    
+        units.set('oz', ['ounces', 'ounce']);        
+        units.set('tsp', ['teaspoons', 'teaspoon']);        
+        units.set('cup', ['cups']);
+        units.set('pound', ['pounds']);
+        units.set('kg', ['kg']);
+        units.set('g', ['g']);
+        units.set('ml', ['ml']);
 
         const newIngredients = this.ingredients.map(el => {
 
             //1) Uniform units
             let ingredient = el.toLowerCase();
 
-            units.forEach((key, value) => {
-                // console.log(`The key is ${key}, the value is ${value} and the ingredient is ${ingredient}`)
-                ingredient = ingredient.replace(key, value)
+            units.forEach((value, key) => {
+                units.get(key).forEach(el => {
+                    ingredient = ingredient.replace(el, key);
+                })                                        
             });
 
             //2) Remove parentheses
@@ -176,8 +174,7 @@ export default class Recipe {
             return objIng
         });
 
-        this.ingredients = newIngredients;
-        console.log(this.ingredients);
+        this.ingredients = newIngredients;        
     }
 
     updateServings(type) {
